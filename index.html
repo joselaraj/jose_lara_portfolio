@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jose Lara &mdash; Software Engineer</title>
+<meta name="description" content="Jose Lara — Computer Science student at NIU, patient transporter, and Army National Guard veteran building full-stack software.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #10151b;
+    --panel: #161d25;
+    --line: #2a333d;
+    --text: #e9e6df;
+    --text-dim: #92a0ab;
+    --accent: #e8a33d;
+    --accent-2: #5fa8a0;
+    --radius: 3px;
+    --maxw: 920px;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3{
+    font-family: 'Libre Franklin', system-ui, sans-serif;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .mono{ font-family: 'IBM Plex Mono', monospace; }
+  a{ color: var(--accent-2); text-decoration: none; }
+  a:hover{ text-decoration: underline; }
+  a:focus-visible, button:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Nav ---------- */
+  nav{
+    position: sticky; top:0; z-index: 10;
+    background: rgba(16,21,27,0.9);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height: 56px;
+  }
+  nav .brand{ font-family:'Libre Franklin'; font-weight:700; font-size:1rem; color:var(--text); }
+  nav .brand:hover{ text-decoration:none; }
+  nav ul{ list-style:none; display:flex; gap:22px; margin:0; padding:0; }
+  nav a{ color: var(--text-dim); font-size: 0.92rem; }
+  nav a:hover{ color: var(--text); text-decoration:none; }
+
+  /* ---------- Hero ---------- */
+  header.hero{ border-bottom: 1px solid var(--line); }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 48px;
+    padding: 64px 0 56px;
+    align-items: start;
+  }
+  .hero h1{ font-size: clamp(2rem, 4vw, 2.7rem); line-height:1.15; }
+  .hero .role{
+    margin-top: 10px;
+    color: var(--text-dim);
+    font-size: 1.05rem;
+    max-width: 46ch;
+  }
+  .hero .intro{
+    margin-top: 22px;
+    max-width: 52ch;
+    color: var(--text);
+  }
+  .hero .links{ margin-top: 26px; display:flex; gap:18px; flex-wrap:wrap; }
+  .hero .links a{
+    font-family:'IBM Plex Mono'; font-size:0.86rem;
+    border:1px solid var(--line); border-radius: var(--radius);
+    padding: 8px 14px; color: var(--text);
+  }
+  .hero .links a:hover{ border-color: var(--accent-2); color: var(--accent-2); text-decoration:none; }
+
+  .readout{
+    border:1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--panel);
+    padding: 20px 22px;
+  }
+  .readout .head{
+    display:flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono'; font-size:0.78rem; color: var(--text-dim);
+    padding-bottom: 12px; border-bottom: 1px solid var(--line); margin-bottom: 14px;
+  }
+  .readout .dot{ width:7px; height:7px; border-radius:50%; background: var(--accent-2); }
+  .readout dl{ margin:0; display:grid; grid-template-columns: auto 1fr; gap: 10px 14px; }
+  .readout dt{ font-family:'IBM Plex Mono'; font-size:0.78rem; color: var(--text-dim); }
+  .readout dd{ margin:0; font-size:0.92rem; }
+
+  /* ---------- Sections ---------- */
+  section{ padding: 56px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+  section h2{ font-size: 1.5rem; margin-bottom: 6px; }
+  section .lede{ color: var(--text-dim); margin-bottom: 34px; max-width: 56ch; }
+
+  /* Projects as a log, not cards */
+  .project{
+    display:grid;
+    grid-template-columns: 108px 1fr;
+    gap: 22px;
+    padding: 26px 0;
+    border-top: 1px solid var(--line);
+  }
+  .project:first-of-type{ border-top: 1px solid var(--line); }
+  .project .period{ font-family:'IBM Plex Mono'; font-size:0.78rem; color: var(--text-dim); padding-top:3px; }
+  .project h3{ font-size: 1.15rem; }
+  .project .desc{ margin-top: 8px; max-width: 60ch; }
+  .project .stack{ margin-top: 12px; display:flex; flex-wrap:wrap; gap:8px; }
+  .project .stack span{
+    font-family:'IBM Plex Mono'; font-size:0.74rem; color: var(--accent);
+    border:1px solid var(--line); border-radius: var(--radius); padding: 3px 8px;
+  }
+  .project .plinks{ margin-top: 12px; display:flex; gap:16px; font-size:0.88rem; }
+
+  /* Timeline for background */
+  .tl{ position:relative; padding-left: 26px; }
+  .tl::before{ content:""; position:absolute; left:5px; top:6px; bottom:6px; width:1px; background: var(--line); }
+  .tl-item{ position:relative; padding-bottom: 30px; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item::before{
+    content:""; position:absolute; left:-26px; top:5px;
+    width:11px; height:11px; border-radius:50%;
+    background: var(--bg); border: 2px solid var(--accent-2);
+  }
+  .tl-item .when{ font-family:'IBM Plex Mono'; font-size:0.78rem; color: var(--text-dim); }
+  .tl-item h3{ font-size: 1.05rem; margin-top: 4px; }
+  .tl-item p{ margin: 6px 0 0; color: var(--text); max-width: 58ch; }
+
+  /* Contact */
+  .contact-links{ display:flex; flex-wrap:wrap; gap: 14px; margin-top: 22px; }
+  .contact-links a{
+    font-family:'IBM Plex Mono'; font-size:0.9rem;
+    border:1px solid var(--line); border-radius: var(--radius);
+    padding: 10px 16px; color: var(--text);
+  }
+  .contact-links a:hover{ border-color: var(--accent); color: var(--accent); text-decoration:none; }
+
+  footer{ padding: 28px 0 48px; color: var(--text-dim); font-size: 0.82rem; }
+
+  @media (max-width: 760px){
+    .hero-grid{ grid-template-columns: 1fr; padding-top: 44px; }
+    .project{ grid-template-columns: 1fr; gap: 8px; }
+    nav ul{ gap: 14px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Jose Lara</a>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#background">Background</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Jose Lara</h1>
+      <p class="role">Computer Science student building full-stack tools, coming from a background in patient care and combat engineering.</p>
+      <p class="intro">I'm finishing a CS degree at Northern Illinois University while working as a patient transporter at a Level II trauma center. Before that, I spent six years as a Combat Engineer and Team Leader in the Illinois Army National Guard. I build data-heavy full-stack projects — dashboards, trackers, and small tools — end to end, from the database up to the deploy.</p>
+      <div class="links">
+        <a href="https://github.com/joselaraj" target="_blank" rel="noopener">github.com/joselaraj</a>
+        <a href="#contact">Email me</a>
+        <a href="#work">See my projects</a>
+      </div>
+    </div>
+    <div class="readout">
+      <div class="head"><span class="dot"></span> status</div>
+      <dl>
+        <dt>role</dt><dd>Patient Transporter, Level II trauma center</dd>
+        <dt>study</dt><dd>B.S. Computer Science, Math minor &mdash; NIU</dd>
+        <dt>grad</dt><dd>December 2027</dd>
+        <dt>prior</dt><dd>Combat Engineer / Team Leader, IL Army National Guard (2018&ndash;2024)</dd>
+        <dt>seeking</dt><dd>Software engineering internships</dd>
+      </dl>
+    </div>
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <h2>Selected work</h2>
+    <p class="lede">Full-stack projects I've built and shipped on my own, usually to solve a problem I actually had.</p>
+
+    <div class="project">
+      <div class="period">2026</div>
+      <div>
+        <h3>NFL Stat Dashboard</h3>
+        <p class="desc">A full-stack stats dashboard for NFL players. A Django REST Framework API backed by MySQL serves position-by-position data (QB, RB, WR, kicker) pulled in with nflreadpy and Polars; a React frontend renders it with Recharts across stat cards, tables, and charts. Deployed with the backend on Railway and the frontend on Vercel.</p>
+        <div class="stack">
+          <span>Django REST Framework</span><span>MySQL</span><span>React</span><span>Recharts</span><span>Railway</span><span>Vercel</span>
+        </div>
+        <div class="plinks">
+          <a href="https://github.com/joselaraj/nfl_stat_dashboard" target="_blank" rel="noopener">Source</a>
+          <a href="https://frontend-lilac-one-64.vercel.app" target="_blank" rel="noopener">Live site</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="period">2026</div>
+      <div>
+        <h3>Car Price Tracker</h3>
+        <p class="desc">A price-drop tracker for used car listings, built on the Auto.dev API instead of scraping sites like Cars.com or CarGurus, whose terms of service prohibit it. Django models track searches, listings, and price history; Celery and Redis run the polling in the background and send an email the moment a tracked listing's price drops.</p>
+        <div class="stack">
+          <span>Django</span><span>Celery</span><span>Redis</span><span>Auto.dev API</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="period">Earlier</div>
+      <div>
+        <h3>Budget Tracker</h3>
+        <p class="desc">A command-line budget tracker written in C++ &mdash; my first full project, focused on getting comfortable with core data structures and file I/O outside of coursework.</p>
+        <div class="stack">
+          <span>C++</span><span>CLI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="period">Ongoing</div>
+      <div>
+        <h3>Fitness &amp; Food Tracker</h3>
+        <p class="desc">A personal, MyFitnessPal-style food and fitness tracking app written in native Swift and SwiftUI, sideloaded onto my own phone through Xcode. Built for my own use rather than an App Store release, so I could design the exact logging flow I wanted.</p>
+        <div class="stack">
+          <span>Swift</span><span>SwiftUI</span><span>iOS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="background">
+  <div class="wrap">
+    <h2>Background</h2>
+    <p class="lede">How I got from combat engineering to a hospital transport floor to software.</p>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="when">2018 &ndash; 2024</div>
+        <h3>Combat Engineer &amp; Team Leader, Illinois Army National Guard</h3>
+        <p>Led a small team through engineering and construction tasks, building the habits &mdash; planning under constraints, checking your own work, staying calm when something breaks &mdash; that carried straight over into debugging software.</p>
+      </div>
+      <div class="tl-item">
+        <div class="when">Current</div>
+        <h3>Patient Transporter, Level II Trauma Center</h3>
+        <p>Move patients safely across a busy hospital floor while studying, working around a schedule that leaves room for coursework and side projects.</p>
+      </div>
+      <div class="tl-item">
+        <div class="when">Expected December 2027</div>
+        <h3>B.S. Computer Science, Math minor &mdash; Northern Illinois University</h3>
+        <p>Coursework in algorithms, systems, and math, alongside side projects built to go deeper than any one class requires.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>Get in touch</h2>
+    <p class="lede">Looking for a software engineering internship. Reach out if you'd like to talk.</p>
+    <div class="contact-links">
+      <a href="mailto:your-email@example.com">your-email@example.com</a>
+      <a href="https://github.com/joselaraj" target="_blank" rel="noopener">GitHub</a>
+      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Jose Lara &mdash; built with plain HTML &amp; CSS.</div>
+</footer>
+
+</body>
+</html>
